@@ -56,16 +56,6 @@ Whenever a message is sent, the application automatically detects and replaces p
 
 ---
 
-## 📷 Demonstration
-
-Add screenshots or GIFs of the application here.
-
-```md
-![Chat Screen](images/chat-screen.png)
-```
-
----
-
 ## 🚀 Future Improvements
 
 - Support group chat functionality.
