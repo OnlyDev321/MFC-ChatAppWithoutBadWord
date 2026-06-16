@@ -14,6 +14,14 @@ MFC-ChatAppWithoutBadWord is a real-time online chat application developed using
 
 Whenever a message is sent, the application automatically detects and replaces prohibited words based on the recipient's custom filtering settings. Through flexible user-specific moderation and real-time message processing, this project aims to create a safer and more positive communication environment.
 
+This project proposes a **Personalized Prohibited Word Filtering System** that enables users to:
+
+- Create their own prohibited-word lists
+- Apply customized filtering rules individually
+- Detect prohibited words in real time
+- Automatically replace prohibited words with `*`
+- Maintain independent filtering settings for each user
+
 ---
 
 ## ✨ Key Features
@@ -36,43 +44,198 @@ Whenever a message is sent, the application automatically detects and replaces p
 
 ---
 
-## ⚙️ How It Works
+### 💬 Real-Time Chat
 
-1. Users connect to the chat server.
-2. Each user can register and manage their own prohibited-word list.
-3. Messages are transmitted in real time.
-4. Before displaying messages, the system checks them against the user's blacklist.
-5. Detected prohibited words are replaced with filtered expressions.
-6. The processed message is then delivered to the user.
+- Instant message transmission
+- Multi-client communication
+- Low-latency message processing
+
+### 🔍 Real-Time Filtering
+
+- Detect prohibited words immediately
+- Filter messages before displaying them
+- Replace detected words with asterisks (`*`)
+
+#### Example
+
+**Original Message**
+
+```text
+You are stupid
+```
+
+**Filtered Message**
+
+```text
+You are ******
+```
 
 ---
 
-## 🎯 Project Objectives
+## 🏗️ System Architecture
 
-- Provide a safer online communication environment.
-- Enable flexible, user-centered content moderation.
-- Reduce exposure to offensive language.
-- Demonstrate the integration of networking and text-processing techniques in MFC applications.
+```text
++-------------+
+|   Client A  |
++-------------+
+       |
+       |
+       v
++------------------+
+|     Chat Server  |
++------------------+
+       ^
+       |
+       |
++-------------+
+|   Client B  |
++-------------+
+```
+
+### Processing Flow
+
+1. User inputs a message.
+2. The message is sent to the server.
+3. The server delivers the message.
+4. The client checks the message against its personal prohibited-word list.
+5. Detected words are replaced with `*`.
+6. The filtered message is displayed to the user.
+
+---
+
+## ⚙️ Filtering Mechanism
+
+The project adopts a **dictionary-based filtering approach**.
+
+### Advantages
+
+- Simple implementation
+- Fast processing speed
+- Suitable for real-time systems
+- Easy customization
+
+### Limitation
+
+- Difficult to detect newly created slang or modified offensive words
+
+Examples:
+
+```text
+badword
+```
+
+can be detected, but variants such as
+
+```text
+b@dword
+b a d w o r d
+```
+
+may require additional processing rules.
+
+---
+
+# 🔄 Workflow
+
+```text
+User Message
+      |
+      v
+Receive Message
+      |
+      v
+Compare with Personal
+Prohibited Word List
+      |
+      v
+Word Detected?
+   /      \
+ Yes      No
+  |         |
+  v         v
+Replace    Display
+with *     Original
+  |
+  v
+Display
+```
+
+---
+
+## 🧪 Experiment
+
+### Test Environment
+
+- Chat Server
+- Two Chat Clients
+- Chat Dataset
+- Prohibited Word Dataset
+
+### Procedure
+
+1. Start the chat server.
+2. Connect two clients.
+3. Exchange messages without filtering.
+4. Add prohibited words to each client.
+5. Repeat chatting.
+6. Verify filtering behavior.
+7. Compare filtering results across different users.
+
+---
+
+## 📊 Results
+
+The experiments showed that:
+
+✅ Prohibited words were successfully detected.
+
+✅ Messages containing prohibited words were correctly filtered.
+
+✅ Different users could maintain different prohibited-word lists.
+
+✅ The same message could be displayed differently depending on each user's settings.
+
+✅ Real-time performance was maintained without noticeable delay.
 
 ---
 
 ## 🚀 Future Improvements
 
-- Support group chat functionality.
-- Introduce administrator-level filtering policies.
-- Apply pattern matching and advanced text-filtering algorithms.
-- Store user settings using a database.
-- Support multilingual prohibited-word filtering.
+The current implementation uses a dictionary-based filtering approach.
+
+Future work may include:
+
+- Deep Learning-based profanity detection
+- Context-aware filtering
+- NLP-based offensive language analysis
+- Detection of modified or obfuscated words
+- Dynamic filtering using neural networks
+- Multi-language support
 
 ---
 
-## 👨‍💻 Author
+## 🎯 Expected Benefits
 
-Developed by:
+- Improve online communication quality
+- Reduce exposure to offensive language
+- Provide personalized user experiences
+- Support safer online communities
+- Enhance user satisfaction
 
-OnlyDev
+---
 
-MFC-ChatAppWithoutBadWord
+## 👨‍💻 Authors
+
+**Soongsil University – School of Software**
+
+- Dong-hwan Kim
+- Youn-hyeong Nam
+- Seung-hwan Boo
+- Jun-seok Jang
+- Hae-yoon Jeong
+- Tran Trung Hau
+
+---
 
 ## 📄 License
 
